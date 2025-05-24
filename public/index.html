@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saarthi</title>
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="section1.css">
+    <link rel="stylesheet" href="section2.css">
+    <link rel="stylesheet" href="section3.css">
+    <link rel="stylesheet" href="section4.css">
+    <style>
+        .chat-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px; 
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .chat-box {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .input-box {
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .bot-message,
+        .user-message {
+            margin-bottom: 10px;
+        }
+
+        .bot-message {
+            text-align: left;
+            color: #555;
+        }
+
+        .user-message {
+            text-align: right;
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img id="logo" src="saarthi logo.png" alt="img">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a>
+                <ul class="dropdown">
+                    <li><a href="#">Training</a></li>
+                    <li><a href="#Bmi">BMI Calculation</a></li>
+                    <li><a href="#">Nutrition</a></li>
+                    <li><a href="#Exercise">Exercise Guide</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contact</a></li>
+            <button id="reg">Register</button>
+        </ul>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Your Journey Starts Here</h1>
+            <p>Empower Your Well-being Today</p>
+        </div>
+        <img src="first.png" alt="Fitness Journey">
+        <button id="start" class="btn">Get Started</button>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-grid">
+                <div class="service-item" id="service1">
+                    <img src="medium-poster-design-no-1902-posters-for-gym-workout-motivation-original-imaghyyu4yernpma.png" alt="training">
+                    <h3>Gym Workout Guide</h3>
+                    <p>A comprehensive tool designed to help individuals target specific muscle groups and achieve their fitness goals with the right exercises.</p>
+                    <a href="#Exercise" class="btn">View</a>
+                </div>
+                <div class="service-item" id="service2">
+                    <img src="BMI+levels-640w.png" alt="BMI">
+                    <h3>BMI Calculator</h3>
+                    <p>Tool that healthcare providers use to estimate the amount of body fat by using your height and weight measurements.</p>
+                    <a href="#Bmi" class="btn">Calculate</a>
+                </div>
+               
+                <div class="service-item" id="service4">
+                    <img src="images.png" alt="images">
+                    <h3>ChatBot</h3>
+                    <p>Conversational tools that perform routine tasks efficiently. </p>
+                    <a href="#" class="btn" onclick="openChat()">Open Chat</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bmi-calculator" id="Bmi">
+        <div class="bmi">
+            <div class="container">
+                <h2>BMI Calculator</h2>
+                <p>Calculate your Body Mass Index to understand your current health status.</p>
+                <form id="bmiForm">
+                    <div class="form-group">
+                        <label for="height">Height (cm):</label>
+                        <input type="number" id="height" name="height" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Weight (kg):</label>
+                        <input type="number" id="weight" name="weight" required>
+                    </div>
+                    <button type="button" onclick="calculateBMI()">Calculate BMI</button>
+                </form>
+                <div class="bmi-result">
+                    <div class="bmi-meter">
+                        <div class="meter">
+                            <div class="needle" id="needle"></div>
+                        </div>
+                    </div>
+                    <div class="bmi-info">
+                        <span id="bmiValue"></span>
+                        <span id="bmiCategory"></span>
+                        <ul id="suggestions"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="exercise-guide" id="Exercise">
+        <div class="container">
+            <h2>Exercise Guide</h2>
+            <p>Search for an exercise to learn how to perform it step-by-step.</p>
+            <form id="exerciseForm">
+                <input type="text" id="exerciseSearch" placeholder="Enter exercise name (e.g., Push Up)" required>
+                <button type="button" onclick="searchExercise()">Search</button>
+            </form>
+            <div id="exerciseResult" class="exercise-result" style="display: none;">
+                <h3 id="exerciseName"></h3>
+                <div id="exerciseImage" class="exercise-image"></div>
+                <ol id="exerciseSteps"></ol>
+                <a id="exerciseVideo" href="#" target="_blank" class="btn" style="display: none;">Watch Video</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ChatBot Section -->
+    <section id="chat-section">
+        <div class="chat-container" id="chatBot">
+            <div id="chatBox" class="chat-box">
+                <div class="bot-message">Hi! I'm your fitness chatbot!</div>
+            </div>
+            <div class="input-box">
+                <input type="text" id="userInput" placeholder="Ask about health, nutrition, or BMI" />
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </section>
+    <script src="section4js.js"></script>
+    <script src="script.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+
+</html>

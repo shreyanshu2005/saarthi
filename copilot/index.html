@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Improved Navbar</title>
+    <link rel="stylesheet" href="Saarthi.css">
+    <link rel="stylesheet" href="section1.css">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="section2.css">
+    <link rel="stylesheet" href="section3.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img id="logo" src="saarthi logo.png" alt="img">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a>
+                <ul class="dropdown">
+                    <li><a href="#">Training</a></li>
+                    <li><a href="#">BMI Calculation</a></li>
+                    <li><a href="#">Nutrition</a></li>
+                    <li><a href="#">Health Monitoring</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Your Journey Starts Here</h1>
+            <p>Empower Your Well-being Today</p>
+        </div>
+        <img src="first.png" alt="Fitness Journey">
+        <a href="#" class="btn">Get Started</a>
+    </section>
+    <section class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-grid">
+                <div class="service-item" id="service1">
+                    <img src="personal-trainer-inner-banner.png" alt="training">
+                    <h3>Personal Training</h3>
+                    <p>Customized training plans to fit your needs. Work one-on-one with our certified trainers.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="service-item" id="service2">
+                    <img src="BMI+levels-640w.png" alt="BMI">
+                    <h3>BMI Calculator</h3>
+                    <p>Tool that healthcare providers use to estimate the amount of body fat by using your height and
+                        weight measurements.</p>
+                    <a href="#Bmi" class="btn">Learn More</a>
+                </div>
+                <div class="service-item" id="service3">
+                    <img src="nutrition_image2.png" alt="Nutrition">
+                    <h3>Nutrition Plans</h3>
+                    <p>Personalized nutrition plans for a healthier you. Fuel your body right.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="service-item" id="service4">
+                    <img src="images.png" alt="images">
+                    <h3>ChatBot</h3>
+                    <p>conversational tools that perform routine tasks efficiently. </p>
+                    <a href="#" class="btn">Open me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bmi-calculator">
+        <div class="bmi" id="Bmi">
+        <div class="container">
+            <h2>BMI Calculator</h2>
+            <p>Calculate your Body Mass Index to understand your current health status.</p>
+            <form id="bmiForm">
+                <div class="form-group">
+                    <label for="height">Height (cm):</label>
+                    <input type="number" id="height" name="height" required>
+                </div>
+                <div class="form-group">
+                    <label for="weight">Weight (kg):</label>
+                    <input type="number" id="weight" name="weight" required>
+                </div>
+                <button type="button" onclick="calculateBMI()">Calculate BMI</button>
+            </form>
+            <div class="bmi-result">
+                <div class="bmi-meter">
+                    <div class="meter">
+                        <div class="needle" id="needle"></div>
+                    </div>
+                </div>
+                <div class="bmi-info">
+                    <span id="bmiValue"></span>
+                    <span id="bmiCategory"></span>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    
+
+
+</body>
+
+</html>
